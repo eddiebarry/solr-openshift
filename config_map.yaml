@@ -1,0 +1,33 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: solr-cluster-config
+  namespace: staging-solr-cloud
+  selfLink: /api/v1/namespaces/staging-solr-cloud/configmaps/solr-cluster-config
+  uid: 1ffa75f3-5326-4a5d-a7e0-e3e2bcb2ca18
+  resourceVersion: '52169984'
+  creationTimestamp: '2020-12-04T08:37:59Z'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-04T08:37:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:solrHeap': {}
+          'f:solrHome': {}
+          'f:solrHost': {}
+          'f:solrHost:': {}
+          'f:solrLogsDir': {}
+          'f:solrPort': {}
+          'f:zkHost': {}
+data:
+  solrHeap: 2g
+  solrHome: /store/data
+  solrHost: $(MY_POD_IP)
+  solrLogsDir: /store/logs
+  solrPort: '8983'
+  zkHost: >-
+    $ZOOKEEPER_1_SERVICE_HOST:2181,$ZOOKEEPER_2_SERVICE_HOST:2181,$ZOOKEEPER_3_SERVICE_HOST:2181

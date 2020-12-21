@@ -1,0 +1,55 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: solr-cloud-staging
+  namespace: staging-solr-cloud
+  selfLink: >-
+    /apis/route.openshift.io/v1/namespaces/staging-solr-cloud/routes/solr-cloud-staging
+  uid: 6939a960-d8b0-48a0-bc6a-e45b0c763611
+  resourceVersion: '52191027'
+  creationTimestamp: '2020-12-04T09:08:22Z'
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2020-12-04T09:08:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2020-12-04T09:08:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+spec:
+  host: solr-cloud-staging-staging-solr-cloud.apps.who.lxp.academy.who.int
+  to:
+    kind: Service
+    name: solr-cloud-service
+    weight: 100
+  port:
+    targetPort: 8983
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: solr-cloud-staging-staging-solr-cloud.apps.who.lxp.academy.who.int
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-12-04T09:08:22Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.who.lxp.academy.who.int

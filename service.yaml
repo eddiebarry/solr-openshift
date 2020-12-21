@@ -1,0 +1,63 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: solr-cloud-service
+  namespace: staging-solr-cloud
+  selfLink: /api/v1/namespaces/staging-solr-cloud/services/solr-cloud-service
+  uid: fa682200-5e79-43ab-a92c-fccd1e189b04
+  resourceVersion: '52190830'
+  creationTimestamp: '2020-12-04T09:06:41Z'
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-04T09:06:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:finalizers':
+            .: {}
+            'v:"service.kubernetes.io/load-balancer-cleanup"': {}
+        'f:spec':
+          'f:clusterIP': {}
+          'f:externalTrafficPolicy': {}
+          'f:ports':
+            .: {}
+            'k:{"port":8983,"protocol":"TCP"}':
+              .: {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+          'f:selector':
+            .: {}
+            'f:app': {}
+          'f:sessionAffinity': {}
+          'f:type': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2020-12-04T09:07:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:loadBalancer':
+            'f:ingress': {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 8983
+      targetPort: 8983
+      nodePort: 31839
+  selector:
+    app: solr-app
+  clusterIP: 172.30.19.25
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer:
+    ingress:
+      - ip: 20.54.8.68
